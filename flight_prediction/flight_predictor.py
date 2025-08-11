@@ -40,11 +40,11 @@ def fetch_features(engine, flight_id: int = None) -> pd.DataFrame:
       MONTH(fd.DepartureTime)          AS Departure_Month,
       DAYOFWEEK(fd.DepartureTime) - 1  AS Departure_Weekday,
       HOUR(fd.DepartureTime)           AS Departure_Hour
-    FROM flightdetails fd
-    LEFT JOIN flightbookingdetails fbd      ON fbd.FlightDetailId = fd.Id
-    JOIN aircraft ac                   ON ac.Id  = fd.AircraftId
-    JOIN airports o                    ON o.Id   = fd.OriginAirportId
-    JOIN airports d                    ON d.Id   = fd.DestinationAirportId
+    FROM FlightDetails fd
+    LEFT JOIN FlightBbookingDetails fbd      ON fbd.FlightDetailId = fd.Id
+    JOIN Aircraft ac                   ON ac.Id  = fd.AircraftId
+    JOIN Airports o                    ON o.Id   = fd.OriginAirportId
+    JOIN Airports d                    ON d.Id   = fd.DestinationAirportId
     WHERE fd.Probability IS NULL
     """
     params = []
